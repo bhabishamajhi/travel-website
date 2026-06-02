@@ -1,4 +1,3 @@
-
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -7,12 +6,15 @@ const connectDB = require("./config/db");
 dotenv.config();
 connectDB();
 
-
-console.log("Stripe Key from server:", process.env.STRIPE_SECRET_KEY);
-
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const cabinRoutes = require("./routes/cabinRoutes");

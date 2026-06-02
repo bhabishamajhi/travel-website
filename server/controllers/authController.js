@@ -1,8 +1,8 @@
-export const loginAdmin = async (req, res) => {
+const loginAdmin = (req, res) => {
   const { email, password } = req.body;
 
   if (email === "admin@gmail.com" && password === "admin123") {
-    res.json({
+    return res.json({
       success: true,
       token: "admin-token-123",
       user: {
@@ -10,12 +10,14 @@ export const loginAdmin = async (req, res) => {
         email: "admin@gmail.com",
       },
     });
-  } else {
-    res.status(401).json({
-      success: false,
-      message: "Invalid email or password",
-    });
   }
+
+  return res.status(401).json({
+    success: false,
+    message: "Invalid email or password",
+  });
 };
 
-export default { loginAdmin };
+module.exports = {
+  loginAdmin,
+};
