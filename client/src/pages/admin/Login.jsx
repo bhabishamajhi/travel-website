@@ -8,22 +8,27 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    if (!API_URL) {
+      alert("API URL not configured");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        `${API_URL}/api/auth/login`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+          body: JSON.stringify({ email, password }),
         }
       );
 
@@ -34,13 +39,13 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(data.user));
 
         alert("Login Successful!");
-        navigate("/admin");
+        navigate("/admin"); // or "/profile"
       } else {
-        alert(data.message);
+        alert(data.message || "Login failed");
       }
     } catch (error) {
-      console.error(error);
-      alert("Server Error");
+      console.error("Login error:", error);
+      alert("Server Error - check backend URL or CORS");
     } finally {
       setLoading(false);
     }
@@ -54,35 +59,23 @@ const Login = () => {
         </h1>
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block mb-2 font-medium">
-              Email
-            </label>
+          <input
+            type="email"
+            placeholder="admin@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border p-3 mb-4 rounded-lg"
+            required
+          />
 
-            <input
-              type="email"
-              placeholder="admin@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full border rounded-lg p-3"
-              required
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block mb-2 font-medium">
-              Password
-            </label>
-
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border rounded-lg p-3"
-              required
-            />
-          </div>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border p-3 mb-6 rounded-lg"
+            required
+          />
 
           <button
             type="submit"
@@ -92,12 +85,6 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-
-        <div className="mt-6 text-center text-sm text-gray-500">
-          <p>Email: admin@gmail.com</p>
-          <p>Password: admin123</p>
-        </div>
-        
       </div>
     </div>
   );

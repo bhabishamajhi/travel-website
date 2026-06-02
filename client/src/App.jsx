@@ -27,12 +27,12 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+<Route path="/profile" element={<Profile />} />
       <Route path="/about" element={<About />} />
       <Route path="/cabins" element={<Cabins />} />
       <Route path="/gift-stay" element={<GiftStay />} />
       <Route path="/inspiration" element={<Inspiration />} />
       <Route path="/cabins/:id" element={<CabinDetails />} />
-      <Route path="/profile" element={<Profile />} />
       <Route path="/buy-gift-card" element={<BuyGiftCard />} />
       <Route path="/payment-success" element={<PaymentSuccess />} />
       <Route path="/reservations/:id" element={<Reservation />} />
