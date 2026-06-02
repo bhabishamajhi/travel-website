@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -87,11 +88,10 @@ const Profile = () => {
           </div>
 
           <div className="mt-10 flex justify-center gap-4">
-            <button
-              className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 rounded-lg font-medium"
-            >
-              Edit Profile
-            </button>
+            
+            <Link to="/login"  className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 rounded-lg font-medium">
+          Log In
+          </Link>
 
             <button
               onClick={handleLogout}
@@ -99,6 +99,7 @@ const Profile = () => {
             >
               Logout
             </button>
+           
           </div>
         </div>
       </section>
