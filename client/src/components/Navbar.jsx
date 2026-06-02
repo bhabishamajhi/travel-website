@@ -21,7 +21,7 @@ const Navbar = () => {
         </ul>
 
         <div className="w-10 h-10 rounded-full border flex items-center justify-center">
-          <Link to="/login">
+          <Link to="/profile">
           👤
           </Link>
           
