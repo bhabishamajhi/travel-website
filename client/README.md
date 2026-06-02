@@ -1,16 +1,105 @@
-# React + Vite
+# 🌍Travel Website (Full Stack MERN Project)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack travel booking website built using **MERN Stack** with an Admin Panel, Authentication, Reservations, and Stripe Payments.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+### 🌐 Frontend (React + Vite)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Home page with travel UI
+- Cabin listing and details page
+- Reservation system
+- User profile page
+- Gift card purchase
+- Payment success page
+- Fully responsive design
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Authentication
+
+- User login system
+- JWT authentication
+- Protected routes
+- Admin login
+
+---
+
+### Admin Panel
+
+- Dashboard (stats overview)
+- Add new cabin
+- Edit cabin
+- Delete cabin
+- Manage bookings
+- Reservation management
+
+---
+
+### Payment Integration
+
+- Stripe payment gateway
+- Secure checkout session
+
+---
+
+### Backend (Node.js + Express)
+
+- REST API
+- MongoDB database
+- Authentication routes
+- Cabin CRUD APIs
+- Reservation APIs
+- Payment APIs
+- Contact form API
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React.js
+- React Router
+- Tailwind CSS
+- Axios
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Stripe
+
+---
+
+## Project Structure
+
+travel-website/
+├── client/ (Frontend)
+├── server/ (Backend)
+
+---
+
+## Deployment
+
+- Frontend: Vercel
+- Backend: Railway
+- Database: MongoDB Atlas
+
+---
+
+## Important Notes
+
+- `.env` file is NOT included in repo (security)
+- Stripe keys must be added in Railway variables
+
+---
+
+## Author
+
+Bhabisha Majhi
