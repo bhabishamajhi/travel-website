@@ -7,7 +7,7 @@ const Reservations = () => {
 
   const fetchReservations = async () => {
     const res = await axios.get(
-      "http://localhost:5000/api/reservations"
+      `${import.meta.env.VITE_API_URL}/api/reservations`
     );
 
     setReservations(res.data);

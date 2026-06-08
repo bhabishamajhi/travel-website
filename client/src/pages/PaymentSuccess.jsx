@@ -7,7 +7,7 @@ const PaymentSuccess = () => {
     const sessionId = query.get("session_id");
 
     if (sessionId) {
-      axios.post("http://localhost:5000/api/payment/verify", {
+      axios.post(`${import.meta.env.VITE_API_URL}/api/payment/verify`, {
         sessionId,
       });
     }

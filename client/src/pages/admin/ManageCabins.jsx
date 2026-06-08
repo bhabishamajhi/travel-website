@@ -5,12 +5,26 @@ import AdminSidebar from "../../components/AdminSidebar";
 const ManageCabins = () => {
   const [cabins, setCabins] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/cabins")
-      .then((res) => setCabins(res.data))
-      .catch(console.error);
-  }, []);
+    const fetchCabins = async () => {
+      try {
+        const res = await axios.get(
+          `${API_URL}/api/cabins`
+        );
+
+        setCabins(res.data);
+      } catch (error) {
+        console.error(
+          "Error fetching cabins:",
+          error
+        );
+      }
+    };
+
+    fetchCabins();
+  }, [API_URL]);
 
   return (
     <div className="flex">
