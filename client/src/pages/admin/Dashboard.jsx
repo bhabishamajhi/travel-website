@@ -16,7 +16,7 @@ const Dashboard = () => {
               Total Cabins
             </h2>
             <p className="text-3xl font-bold mt-3">
-              12
+              3
             </p>
           </div>
 
@@ -25,7 +25,7 @@ const Dashboard = () => {
               Total Bookings
             </h2>
             <p className="text-3xl font-bold mt-3">
-              48
+              1
             </p>
           </div>
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
               Total Users
             </h2>
             <p className="text-3xl font-bold mt-3">
-              32
+              1
             </p>
           </div>
         </div>
