@@ -4,14 +4,13 @@ import AdminSidebar from "../../components/AdminSidebar";
 
 const AddCabin = () => {
   const [formData, setFormData] = useState({
-  location: "",
   title: "",
-  description: "",
+  location: "",
   price: "",
-  imageUrl: ""
-  });
+  image: "",
+  description: ""
+});
 
-  // ✅ THIS WAS MISSING
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,16 +22,25 @@ const AddCabin = () => {
   e.preventDefault();
 
   try {
-    const res = await axios.post(
+    await axios.post(
       `${import.meta.env.VITE_API_URL}/api/cabins`,
       formData
     );
 
-    console.log(res.data);
     alert("Cabin added successfully!");
+
+    setFormData({
+      title: "",
+      location: "",
+      price: "",
+      image: "",
+      description: ""
+    });
+
   } catch (error) {
-  console.log("FULL ERROR:", error.response?.data);
-}
+    console.log("FULL ERROR:", error.response?.data);
+    alert("Failed to add cabin");
+  }
 };
 
   return (
@@ -74,6 +82,23 @@ const AddCabin = () => {
             placeholder="Price"
             className="border p-3 w-full mb-4"
           />
+
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            placeholder="Image URL"
+            className="border p-3 w-full mb-4"
+          />
+
+          <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Description"
+          className="border p-3 w-full mb-4"
+         />
 
           <button
             type="submit"
