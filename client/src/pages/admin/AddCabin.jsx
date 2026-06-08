@@ -4,9 +4,11 @@ import AdminSidebar from "../../components/AdminSidebar";
 
 const AddCabin = () => {
   const [formData, setFormData] = useState({
-    title: "",
-    location: "",
-    price: ""
+  location: "",
+  title: "",
+  description: "",
+  price: "",
+  imageUrl: ""
   });
 
   // ✅ THIS WAS MISSING
@@ -29,8 +31,8 @@ const AddCabin = () => {
     console.log(res.data);
     alert("Cabin added successfully!");
   } catch (error) {
-    console.log("ERROR:", error.response?.data || error.message);
-  }
+  console.log("FULL ERROR:", error.response?.data);
+}
 };
 
   return (
