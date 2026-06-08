@@ -18,28 +18,20 @@ const AddCabin = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/cabins`,
-        formData
-      );
+  try {
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/cabins`,
+      formData
+    );
 
-      alert("Cabin added successfully!");
-
-      // optional: reset form
-      setFormData({
-        title: "",
-        location: "",
-        price: ""
-      });
-
-    } catch (error) {
-      console.log(error);
-      alert("Failed to add cabin");
-    }
-  };
+    console.log(res.data);
+    alert("Cabin added successfully!");
+  } catch (error) {
+    console.log("ERROR:", error.response?.data || error.message);
+  }
+};
 
   return (
     <div className="flex">
