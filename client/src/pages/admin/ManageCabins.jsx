@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminSidebar from "../../components/AdminSidebar";
@@ -7,6 +8,7 @@ const ManageCabins = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
+  // Fetch cabins
   useEffect(() => {
     const fetchCabins = async () => {
       try {
@@ -16,15 +18,30 @@ const ManageCabins = () => {
 
         setCabins(res.data);
       } catch (error) {
-        console.error(
-          "Error fetching cabins:",
-          error
-        );
+        console.error("Error fetching cabins:", error);
       }
     };
 
     fetchCabins();
   }, [API_URL]);
+
+  // Delete cabin
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(
+        `${API_URL}/api/cabins/${id}`
+      );
+
+      // update UI instantly (no refresh)
+      setCabins((prev) =>
+        prev.filter((cabin) => cabin._id !== id)
+      );
+
+    } catch (error) {
+      console.log("DELETE ERROR:", error.response?.data);
+      alert("Failed to delete cabin");
+    }
+  };
 
   return (
     <div className="flex">
@@ -47,25 +64,20 @@ const ManageCabins = () => {
 
           <tbody>
             {cabins.map((cabin) => (
-              <tr key={cabin._id}>
-                <td className="p-3">
-                  {cabin.title}
-                </td>
-
-                <td className="p-3">
-                  {cabin.location}
-                </td>
-
-                <td className="p-3">
-                  £{cabin.price}
-                </td>
+              <tr key={cabin._id} className="border-t">
+                <td className="p-3">{cabin.title}</td>
+                <td className="p-3">{cabin.location}</td>
+                <td className="p-3">£{cabin.price}</td>
 
                 <td className="p-3">
                   <button className="bg-blue-500 text-white px-3 py-1 rounded mr-2">
                     Edit
                   </button>
 
-                  <button className="bg-red-500 text-white px-3 py-1 rounded">
+                  <button
+                    onClick={() => handleDelete(cabin._id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded"
+                  >
                     Delete
                   </button>
                 </td>
