@@ -13,7 +13,7 @@ const CabinDetails = () => {
     const fetchCabin = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/cabins/${id}`
+          `${import.meta.env.VITE_API_URL}/api/cabins/${id}`
         );
 
         setCabin(res.data);

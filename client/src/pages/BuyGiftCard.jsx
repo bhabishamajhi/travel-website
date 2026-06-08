@@ -30,7 +30,7 @@ const BuyGiftCard = () => {
       console.log("Sending payment request...");
 
       const res = await fetch(
-        "http://localhost:5000/api/payment/create-checkout-session",
+        `${import.meta.env.VITE_API_URL}/api/payment/create-checkout-session`,
         {
           method: "POST",
           headers: {

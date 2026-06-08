@@ -20,7 +20,7 @@ const Reservations = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/reservations/${id}`
+        `${import.meta.env.VITE_API_URL}/api/reservations/${id}`
       );
 
       alert("Reservation deleted");
