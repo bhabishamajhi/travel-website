@@ -88,7 +88,7 @@ travel-website/
 ## Deployment
 
 - Frontend: Vercel
-- Backend: Railway
+- Backend: render
 - Database: MongoDB Atlas
 
 ---
@@ -96,7 +96,7 @@ travel-website/
 ## Important Notes
 
 - `.env` file is NOT included in repo (security)
-- Stripe keys must be added in Railway variables
+- Stripe keys must be added in render variables
 
 ---
 
